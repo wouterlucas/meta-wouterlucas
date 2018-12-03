@@ -1,0 +1,25 @@
+From 3d81030f44cec35bf3a2357d7ec974864846b691 Mon Sep 17 00:00:00 2001
+From: wouterlucas <wouter@wouterlucas.com>
+Date: Sun, 2 Dec 2018 19:59:33 -0800
+Subject: [PATCH] Dont use precompiled headers when building nexus basemodules
+
+---
+ nexus/build/nexus.inc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/nexus/build/nexus.inc b/nexus/build/nexus.inc
+index 80c1a9b0..2ee56482 100644
+--- a/nexus/build/nexus.inc
++++ b/nexus/build/nexus.inc
+@@ -90,7 +90,7 @@ NEXUS_DEFINES += $(foreach module, $(NEXUS_MODULES),NEXUS_HAS_$(module))
+ NEXUS_CFLAGS += -I$(NEXUS_BASE_INCLUDE_DIR)/config $(addprefix -D,$(NEXUS_DEFINES))
+ NEXUS_CFLAGS += $(addprefix -I,$(NEXUS_EXTRA_INCLUDES))
+ NEXUS_CFLAGS += $(addprefix -I,$(NEXUS_PLATFORM_PUBLIC_INCLUDES))
+-NEXUS_USE_PRECOMPILED_HEADERS ?=y
++NEXUS_USE_PRECOMPILED_HEADERS ?=n
+ NEXUS_P_WITH_PRECOMPILED_HEADERS := $(findstring y, ${NEXUS_USE_PRECOMPILED_HEADERS})
+ NEXUS_MAGNUM_PRECOMPILED_HEADER := ${MAGNUM}/basemodules/std/bstd.h
+ NEXUS_PRECOMPILED_HEADER := ${NEXUS_TOP}/base/include/nexus_base.h
+-- 
+2.11.0
+
