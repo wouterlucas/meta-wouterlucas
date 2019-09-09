@@ -1,0 +1,23 @@
+From 5c699dc01735ae453d1276301f1f48b7bc07ae5e Mon Sep 17 00:00:00 2001
+From: wouterlucas <wouter@wouterlucas.com>
+Date: Sun, 8 Sep 2019 14:17:30 -0700
+Subject: [PATCH] Remove Werror as ccache 3.2.5 has warning with GCC7 or higher
+
+---
+ dev.mk.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/dev.mk.in b/dev.mk.in
+index 5107109..1d15667 100644
+--- a/dev.mk.in
++++ b/dev.mk.in
+@@ -1,6 +1,5 @@
+ # GNU make syntax reigns in this file.
+ 
+-all_cflags += -Werror
+ all_cppflags += -MD -MP -MF .deps/$(subst .._,,$(subst /,_,$(subst $(srcdir)/,,$<))).d
+ 
+ ASCIIDOC = asciidoc
+-- 
+2.20.1
+
